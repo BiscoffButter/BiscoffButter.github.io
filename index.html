@@ -3,124 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiscoffButter</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 60px 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            max-width: 600px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease;
-        }
-
-        .subtitle {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        button {
-            padding: 12px 30px;
-            font-size: 1em;
-            border: none;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.3);
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        button:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .info-box {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <title>Interactive Games & Puzzles</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>BiscoffButter</h1>
-        <p class="subtitle">Welcome to my GitHub Pages Portfolio</p>
-        
-        <div class="button-group">
-            <button onclick="alert('👋 Hello from GitHub Pages!')">Click Me!</button>
-            <button onclick="toggleInfo()">More Info</button>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 Game Zone</h1>
+            <nav class="nav">
+                <button class="nav-btn active" data-game="memory">Memory Match</button>
+                <button class="nav-btn" data-game="tictactoe">Tic-Tac-Toe</button>
+                <button class="nav-btn" data-game="puzzle">15 Puzzle</button>
+            </nav>
         </div>
-        
-        <div class="info-box" id="infoBox" style="display: none;">
-            <p>This is your GitHub Pages website! You can customize it with your own content, projects, and styles. Built with HTML, CSS, and JavaScript.</p>
-        </div>
-    </div>
+    </header>
 
-    <script>
-        function toggleInfo() {
-            const infoBox = document.getElementById('infoBox');
-            infoBox.style.display = infoBox.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
+    <main class="main-content">
+        <div class="container">
+            <!-- Memory Game Section -->
+            <section id="memory-game" class="game-section active">
+                <div class="game-header">
+                    <h2>Memory Match</h2>
+                    <p class="game-instructions">Find all matching pairs of cards!</p>
+                    <div class="stats">
+                        <span>Moves: <strong id="memory-moves">0</strong></span>
+                        <span>Time: <strong id="memory-time">0:00</strong></span>
+                    </div>
+                </div>
+                <div class="game-board" id="memory-board"></div>
+                <button class="btn-primary" id="memory-restart">Restart Game</button>
+            </section>
+
+            <!-- Tic-Tac-Toe Section -->
+            <section id="tictactoe-game" class="game-section">
+                <div class="game-header">
+                    <h2>Tic-Tac-Toe</h2>
+                    <p class="game-instructions">Get three in a row to win!</p>
+                    <div class="stats">
+                        <span id="tictactoe-turn">Player X's Turn</span>
+                    </div>
+                </div>
+                <div class="game-board" id="tictactoe-board"></div>
+                <div class="game-controls">
+                    <button class="btn-primary" id="tictactoe-restart">Restart Game</button>
+                </div>
+            </section>
+
+            <!-- 15 Puzzle Section -->
+            <section id="puzzle-game" class="game-section">
+                <div class="game-header">
+                    <h2>15 Puzzle</h2>
+                    <p class="game-instructions">Arrange numbers 1-15 in order. Click tiles to move them!</p>
+                    <div class="stats">
+                        <span>Moves: <strong id="puzzle-moves">0</strong></span>
+                        <span>Time: <strong id="puzzle-time">0:00</strong></span>
+                    </div>
+                </div>
+                <div class="game-board" id="puzzle-board"></div>
+                <button class="btn-primary" id="puzzle-restart">Restart Game</button>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built with ❤️ | Play, Learn, Have Fun!</p>
+        </div>
+    </footer>
+
+    <script src="games.js"></script>
 </body>
 </html>
